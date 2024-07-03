@@ -77,13 +77,6 @@ class Student(User):
     #methods
     def AddCourse(self): #Shadman
         print("Add Course was Successfully Used")
-        sql_command = """CREATE TABLE IF NOT EXISTS ENROLLMENT (
-		student_id
-        course_id INTEGER NOT NULL
-		)
-		;"""
-        cursor.execute(sql_command)
-        conn.commit()
         
         course_id = input("Enter the course ID to add: ")
         cursor.execute("INSERT INTO ENROLLMENT (student_id, course_id) VALUES (?, ?)", (self.ID, course_id))
@@ -162,6 +155,13 @@ class Admin(User):
 import sqlite3
 conn=sqlite3.connect('assignment3_edit.db')
 cursor = conn.cursor()
+
+sql_command = """CREATE TABLE IF NOT EXISTS ENROLLMENT (
+student_id INTEGER NOT NULL,
+course_id INTEGER NOT NULL
+);"""
+cursor.execute(sql_command)
+conn.commit()
 
 user_type = 0
 while user_type == 0: #Shadman did the login section, Tucker modified for implemention in main code
