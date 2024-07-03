@@ -108,7 +108,6 @@ class Instructor(User):
     #methods
     def Print_schedule(self): #Shadman
         print("Print Schedule was Successfully Used")
-        print("Print Schedule was Successfully Used")
         cursor.execute("SELECT * FROM COURSE WHERE instructor_id = ?", (self.ID,))
         query_result = cursor.fetchall()
         for i in query_result:
@@ -127,7 +126,7 @@ class Admin(User):
         User.__init__(self, first, last, ID)
     
     #methods
-    def add_courses(self): #Shadman
+    def add_courses(self): #Shadman, Tucker modified to implement in code
         print("Add Courses was Successfully Used")
         u_id = input("Enter CRN: ")
         u_title = input("Enter Title: ")
